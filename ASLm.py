@@ -7,8 +7,6 @@ Created on Wed Feb 21 13:15:33 2024
 
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score, accuracy_score, confusion_matrix
 import cv2
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
@@ -97,41 +95,10 @@ def draw_rect(image, result):
     
     
 def print_result(result: HandLandmarkerResult, output_image: mp.Image, timestamp_ms: int):
-    # global image
 
-    # print('hand landmarker result: {}'.format(result))
-    # draw the landmarks on the image
-    # image = draw_landmarks_on_image(output_image,w result)
-    # if cv2.waitKey(1) == ord('e'):
-    #     for landmark_list in result.hand_landmarks:
-    #         for landmark in landmark_list:
-    #             file1 = open('output.csv', 'a')
-    #             print(landmark.x, landmark.y, landmark.z, file=file1)
-    #             file1.close()
-
-    # image = draw_landmarks_on_image(output_image.numpy_view(), result)all 
     global HandLandmarkerResult
     HandLandmarkerResult = result
-    # global started
-    # if started:
-    #     if len(result.hand_landmarks) > 0:
-    #         write_to_csv(result)
-            # global counter
-            # counter += 1
-            # print("check")
-            # global alphabet
-            # print(result)
-            # for landmark_list in result.hand_landmarks:
-            #     print("for")
-            #     for landmark in landmark_list:
-            #         global data
-            #         print(landmark.x)
-            #         data[str(counter*3)].append(landmark.x)
-            #         print(1)
-            #         data[str(counter*3 + 1)].append(landmark.y)
-            #         print(2)
-            #         data[str(counter*3 + 2)].append(landmark.z)
-            #         print("after")
+
 
 options = HandLandmarkerOptions(
     base_options=BaseOptions(model_asset_path='hand_landmarker.task'),
