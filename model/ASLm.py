@@ -15,6 +15,7 @@ import time
 import mediapipe as mp
 import numpy as np
 from mediapipe import solutions
+from joblib import dump
 
 BaseOptions = mp.tasks.BaseOptions
 HandLandmarker = mp.tasks.vision.HandLandmarker
@@ -117,6 +118,7 @@ x = df.loc[:, df.columns != 'OUT']
 y = df['OUT']
 model = LogisticRegression(max_iter=100000)
 model.fit(x, y)
+dump(model, 'ASLm.joblib')
 
 cap = cv2.VideoCapture(0)
 while True:
